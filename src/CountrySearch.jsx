@@ -14,37 +14,37 @@ const CountrySearch = () => {
                     <FontAwesomeIcon icon={faSearch} className="search-icon" />
                     <input
                         type="text"
-                        placeholder="Search..."
-                        onChange={(event) => {
-                            setSearchTerm(event.target.value);
+                        placeholder="Search By currency INR,EUR"
+                        onChange={(e) => {
+                            setSearchTerm(e.target.value);
                         }}
                     />
                 </div>
 
-                <div className="template_Container">
+                <div className="country">
                     {data
-                        .filter((val) => {
+                        .filter((value) => {
                             if (searchTerm === "") {
-                                return val;
+                                return value;
                             } else if (
-                                val.currency
+                                value.currency
                                     .toLowerCase()
                                     .includes(searchTerm.toLowerCase())
                             ) {
-                                return val;
+                                return value;
                             }
                         })
-                        .map((val) => {
+                        .map((value) => {
                             return (
-                                <div className="template" key={val.name}>
-                                    <img src={val.flag} alt={val.name} />
+                                <div className="details" key={value.name}>
+                                    <img src={value.flag} alt={value.name} />
                                     <hr />
-                                    <h3>{val.name}</h3>
+                                    <h3>{value.name}</h3>
                                     <p>
-                                        Capital : {val.capital} <br />
+                                        Capital : {value.capital} <br />
                                         <br />
-                                        Currency : {val.currency} (
-                                        {val.currency_sign})
+                                        Currency : {value.currency} (
+                                        {value.currency_sign})
                                     </p>
                                 </div>
                             );
